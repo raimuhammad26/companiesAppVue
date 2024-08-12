@@ -1,16 +1,40 @@
 <script setup>
 import { ref } from 'vue';
+import axios from "axios"
 
+//refs for login fields
+const username = ref('')
+const loginpassword = ref('')
+
+//refs for signup fields
 const password = ref('');
 const confirmPassword = ref('');
 const error = ref('');
 
+// 1. Signup Function
 function handleSubmitSignUpForm() {
   if (password.value !== confirmPassword.value) {
     error.value = 'Passwords do not match!';
   }
-  else{
+  else {
     // Create account after confirming user duplicate not in database
+  }
+}
+
+// 2. Login Function
+async function handleLogin() {
+  try {
+    const response = await axios.post('https://companiesflaskapi.onrender.com/oauth/token', {
+      username: username.value,
+      password: loginpassword.value,
+    });
+
+    if (response.data.access_token) {
+      alert('Login successful!');
+    }
+
+  } catch (err) {
+    alert("Username or password incorrect")
   }
 }
 </script>
@@ -22,11 +46,11 @@ function handleSubmitSignUpForm() {
     <div class="com-form">
 
       <!-- Sign in Form -->
-      <form action="">
+      <form @submit.prevent="handleLogin">
         <div>
-          <input class="com-inp" type="text" placeholder="Username" required />
-          <input class="com-inp" type="password" placeholder="Password" required>
-          <button class="com-btn" ype="submit">Login</button>
+          <input class="com-inp" type="text" v-model="username" placeholder="Username" required />
+          <input class="com-inp" type="password" v-model="loginpassword" placeholder="Password" required>
+          <button class="com-btn" type="submit">Login</button>
         </div>
       </form>
 
@@ -40,7 +64,7 @@ function handleSubmitSignUpForm() {
           <input class="com-inp" type="password" v-model="password" placeholder="New Password" required>
           <input class="com-inp" type="password" v-model="confirmPassword" placeholder="Confirm New Password" required>
           <p v-if="error" style="color: red;">{{ error }}</p>
-          <button class="com-btn" ype="submit">Sign up</button>
+          <button class="com-btn" type="submit">Sign up</button>
         </div>
       </form>
     </div>
