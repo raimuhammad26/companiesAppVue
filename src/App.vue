@@ -30,6 +30,8 @@ async function handleLogin() {
     });
 
     if (response.data.access_token) {
+      //store the token
+      localStorage.setItem('access_token', response.data.access_token);
       alert('Login successful!');
     }
 
