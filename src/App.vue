@@ -6,17 +6,20 @@
 
   <div class="com-form-container">
     <div class="com-form">
+
+      <!-- Sign in Form -->
       <form action="">
-        <!-- Sign in Form -->
         <div>
           <input class="com-inp" type="text" placeholder="Username" required />
           <input class="com-inp" type="password" placeholder="Password" required>
           <button class="com-btn" ype="submit">Login</button>
         </div>
+      </form>
 
-        <br>
-        <hr>
-        <!-- Sign up Form -->
+      <br>
+      <hr>
+      <!-- Sign up Form -->
+      <form action="">
         <div style="margin-top:10px">
           <p>Don't have an account? Sign up below</p>
           <input class="com-inp" type="text" placeholder="New Username" required />
@@ -45,7 +48,7 @@
   padding: 15px;
 }
 
-form div {
+.com-form div {
   display: flex;
   flex-direction: column;
 }
@@ -63,11 +66,12 @@ input {
   border: 0;
 
   font-size: 20px;
+  font-weight: 600;
   line-height: 48px;
   padding: 0 16px;
 }
 
-.com-btn:hover{
+.com-btn:hover {
   background-color: black;
   transition: 0.5s;
 }
