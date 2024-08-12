@@ -1,6 +1,31 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from "axios"
+
+const isloggedin = ref(0);
+
+onMounted(() => {
+  const savedLoginState = localStorage.getItem('isloggedin');
+  const savedUser = localStorage.getItem("username")
+
+  if (savedLoginState) {
+    isloggedin.value = parseInt(savedLoginState);
+    username.value = savedUser
+  }
+  loggedInChecker();
+});
+
+function loggedInChecker() {
+  if (isloggedin.value === 0) {
+    document.querySelector('.com-nav').style.display = 'none';
+    document.querySelector('.com-headline').style.display = 'block';
+    document.querySelector('.com-form').style.display = 'block';
+  } else if (isloggedin.value === 1) {
+    document.querySelector('.com-nav').style.display = 'flex';
+    document.querySelector('.com-headline').style.display = 'none';
+    document.querySelector('.com-form').style.display = 'none';
+  }
+}
 
 //refs for login fields
 const username = ref('')
@@ -30,7 +55,9 @@ async function handleSubmitSignUpForm() {
       //When sign up successful, go to dashboard
       if (response.data.message) {
         console.log("✅ Sign-up successful");
+        localStorage.setItem('isloggedin', 1);
         username.value = newusername.value
+        localStorage.setItem('username', username.value);
         document.querySelector('.com-nav').style.display = 'flex';
         document.querySelector('.com-headline').style.display = 'none';
         document.querySelector('.com-form').style.display = 'none';
@@ -66,6 +93,8 @@ async function handleLogin() {
       localStorage.setItem('access_token', response.data.access_token);
       // alert('Login successful!');
       console.log("✅ Login successful")
+      localStorage.setItem('isloggedin', 1);
+      localStorage.setItem('username', username.value);
       document.querySelector('.com-nav').style.display = 'flex';
       document.querySelector('.com-headline').style.display = 'none';
       document.querySelector('.com-form').style.display = 'none';
@@ -79,6 +108,8 @@ async function handleLogin() {
 // Logout Function
 function handleLogout() {
   console.log("✅ Logout successful")
+  localStorage.removeItem('isloggedin');
+  localStorage.removeItem('username');
   document.querySelector('.com-nav').style.display = 'none';
   document.querySelector('.com-headline').style.display = 'block';
   document.querySelector('.com-form').style.display = 'block';
