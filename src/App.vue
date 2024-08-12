@@ -24,7 +24,7 @@ function handleSubmitSignUpForm() {
 // 2. Login Function
 async function handleLogin() {
   try {
-    const response = await axios.post('https://localhost:5000/', {
+    const response = await axios.post('http://localhost:5000/oauth/token', {
       username: username.value,
       password: loginpassword.value,
     });
