@@ -8,8 +8,9 @@ body {
     background-color: #eee;
 }
 
-.com-headline{
+.com-headline {
     padding: 20px;
+    text-align: center;
 }
 
 .com-form-container {
@@ -66,7 +67,7 @@ input {
 }
 
 .com-nav {
-    display: none;  
+    display: none;
     /* display on above line becomes flex after login */
     flex-direction: row;
     justify-content: space-between;
@@ -84,7 +85,7 @@ input {
     align-items: center;
 }
 
-.logout-btn{
+.logout-btn {
     background: #252122;
     color: #fff;
     margin: 3px;

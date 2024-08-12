@@ -32,12 +32,24 @@ async function handleLogin() {
     if (response.data.access_token) {
       //store the token
       localStorage.setItem('access_token', response.data.access_token);
-      alert('Login successful!');
+      // alert('Login successful!');
+      console.log("✅ Login successful")
+      document.querySelector('.com-nav').style.display = 'flex';
+      document.querySelector('.com-headline').style.display = 'none';
+      document.querySelector('.com-form').style.display = 'none';
     }
 
   } catch (err) {
     alert("Username or password incorrect")
   }
+}
+
+// Logout Function
+function handleLogout() {
+  console.log("✅ Logout successful")
+  document.querySelector('.com-nav').style.display = 'none';
+  document.querySelector('.com-headline').style.display = 'block';
+  document.querySelector('.com-form').style.display = 'block';
 }
 </script>
 
@@ -48,13 +60,13 @@ async function handleLogin() {
       <h1>Companies App</h1>
     </div>
     <div class="com-nav-right">
-      <p>Welcome, admin</p>
-      <button class="logout-btn">Logout</button>
+      <p>Welcome, {{ username }}</p>
+      <button class="logout-btn" @click="handleLogout">Logout</button>
     </div>
   </nav>
 
 
-  <h1 class="com-headline" align="center">Companies App</h1>
+  <h1 class="com-headline">Companies App</h1>
 
   <div class="com-form-container">
     <div class="com-form">
