@@ -24,7 +24,7 @@ function handleSubmitSignUpForm() {
 // 2. Login Function
 async function handleLogin() {
   try {
-    const response = await axios.post('https://companiesflaskapi.onrender.com/oauth/token', {
+    const response = await axios.post('https://localhost:5000/', {
       username: username.value,
       password: loginpassword.value,
     });
