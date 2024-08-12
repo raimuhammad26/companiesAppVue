@@ -7,18 +7,50 @@ const username = ref('')
 const loginpassword = ref('')
 
 //refs for signup fields
+const newusername = ref('')
 const password = ref('');
 const confirmPassword = ref('');
 const error = ref('');
 
 // 1. Signup Function
-function handleSubmitSignUpForm() {
-  if (password.value !== confirmPassword.value) {
-    error.value = 'Passwords do not match!';
+async function handleSubmitSignUpForm() {
+  try {
+    //A. If passwords dont match
+    if (password.value !== confirmPassword.value) {
+      error.value = 'Passwords do not match!';
+      return
+    }
+    //B. If passwords match then create new user
+    else {
+      const response = await axios.post('http://127.0.0.1:5000/signup', {
+        username: newusername.value,
+        password: password.value,
+      });
+
+      //When sign up successful, go to dashboard
+      if (response.data.message) {
+        console.log("✅ Sign-up successful");
+        username.value = newusername.value
+        document.querySelector('.com-nav').style.display = 'flex';
+        document.querySelector('.com-headline').style.display = 'none';
+        document.querySelector('.com-form').style.display = 'none';
+        alert("Sign up successful")
+      }
+
+    }
+
+  } catch (err) {
+    if (err.response) {
+      if (err.response.status === 400) {
+        alert("Username already exists")
+      }
+    }
+    else {
+      alert("Sign-up failed: " + err.message);
+    }
+
   }
-  else {
-    // Create account after confirming user duplicate not in database
-  }
+
 }
 
 // 2. Login Function
@@ -86,7 +118,7 @@ function handleLogout() {
       <form @submit.prevent="handleSubmitSignUpForm">
         <div style="margin-top:10px">
           <p>Don't have an account? Sign up below</p>
-          <input class="com-inp" type="text" placeholder="New Username" required />
+          <input class="com-inp" type="text" v-model="newusername" placeholder="New Username" required />
           <input class="com-inp" type="password" v-model="password" placeholder="New Password" required>
           <input class="com-inp" type="password" v-model="confirmPassword" placeholder="Confirm New Password" required>
           <p v-if="error" style="color: red;">{{ error }}</p>
