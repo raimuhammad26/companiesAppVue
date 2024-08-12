@@ -1,4 +1,18 @@
 <script setup>
+import { ref } from 'vue';
+
+const password = ref('');
+const confirmPassword = ref('');
+const error = ref('');
+
+function handleSubmitSignUpForm() {
+  if (password.value !== confirmPassword.value) {
+    error.value = 'Passwords do not match!';
+  }
+  else{
+    // Create account after confirming user duplicate not in database
+  }
+}
 </script>
 
 <template>
@@ -19,12 +33,13 @@
       <br>
       <hr>
       <!-- Sign up Form -->
-      <form action="">
+      <form @submit.prevent="handleSubmitSignUpForm">
         <div style="margin-top:10px">
           <p>Don't have an account? Sign up below</p>
           <input class="com-inp" type="text" placeholder="New Username" required />
-          <input class="com-inp" type="password" placeholder="New Password" required>
-          <input class="com-inp" type="password" placeholder="Confirm New Password" required>
+          <input class="com-inp" type="password" v-model="password" placeholder="New Password" required>
+          <input class="com-inp" type="password" v-model="confirmPassword" placeholder="Confirm New Password" required>
+          <p v-if="error" style="color: red;">{{ error }}</p>
           <button class="com-btn" ype="submit">Sign up</button>
         </div>
       </form>
