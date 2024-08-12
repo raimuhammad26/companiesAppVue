@@ -1,54 +1,60 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 body {
     background-color: #eee;
 }
 
+.com-headline{
+    padding: 20px;
+}
+
 .com-form-container {
     display: flex;
     justify-content: center;
-  }
-  
-  .com-form {
+}
+
+.com-form {
     text-align: center;
     /* width: 300px; */
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     padding: 15px;
-  }
-  
-  .com-form div {
+}
+
+.com-form div {
     display: flex;
     flex-direction: column;
-  }
-  
-  input {
+}
+
+input {
     margin: 3px;
-  }
-  
-  .com-btn {
+}
+
+.com-btn {
     margin: 3px;
     background: #252122;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
     border: 0;
-  
+
     font-size: 20px;
     font-weight: 600;
     line-height: 48px;
     padding: 0 16px;
-  }
-  
-  .com-btn:hover {
+}
+
+.com-btn:hover {
     background-color: black;
     transition: 0.5s;
-  }
-  
-  .com-inp {
+}
+
+.com-inp {
     padding: 14px 16px;
     font-size: 17px;
     width: 330px;
@@ -57,4 +63,37 @@ body {
     color: #1d2129;
     margin-top: 6px;
     margin-bottom: 6px;
-  }
+}
+
+.com-nav {
+    display: none;  
+    /* display on above line becomes flex after login */
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 60px;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.com-nav-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logout-btn{
+    background: #252122;
+    color: #fff;
+    margin: 3px;
+    margin-left: 30px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 16px;
+    line-height: 38px;
+    font-weight: 600;
+}

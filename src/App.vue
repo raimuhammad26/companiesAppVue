@@ -42,7 +42,19 @@ async function handleLogin() {
 </script>
 
 <template>
-  <h1 align="center">Companies App</h1>
+
+  <nav class="com-nav">
+    <div>
+      <h1>Companies App</h1>
+    </div>
+    <div class="com-nav-right">
+      <p>Welcome, admin</p>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+
+  <h1 class="com-headline" align="center">Companies App</h1>
 
   <div class="com-form-container">
     <div class="com-form">
