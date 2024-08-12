@@ -12,15 +12,17 @@
           <input class="com-inp" type="text" placeholder="Username" required />
           <input class="com-inp" type="password" placeholder="Password" required>
           <button class="com-btn" ype="submit">Login</button>
-          <p>Don't have an account? Click to sign up</p>
         </div>
+
+        <br>
+        <hr>
         <!-- Sign up Form -->
-        <div>
+        <div style="margin-top:10px">
+          <p>Don't have an account? Sign up below</p>
           <input class="com-inp" type="text" placeholder="New Username" required />
           <input class="com-inp" type="password" placeholder="New Password" required>
           <input class="com-inp" type="password" placeholder="Confirm New Password" required>
           <button class="com-btn" ype="submit">Sign up</button>
-          <p>Already have an account? Click to sign in</p>
         </div>
       </form>
     </div>
