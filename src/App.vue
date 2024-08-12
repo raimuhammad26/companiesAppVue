@@ -1,47 +1,83 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h1 align="center">Companies App</h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="com-form-container">
+    <div class="com-form">
+      <form action="">
+        <!-- Sign in Form -->
+        <div>
+          <input class="com-inp" type="text" placeholder="Username" required />
+          <input class="com-inp" type="password" placeholder="Password" required>
+          <button class="com-btn" ype="submit">Login</button>
+          <p>Don't have an account? Click to sign up</p>
+        </div>
+        <!-- Sign up Form -->
+        <div>
+          <input class="com-inp" type="text" placeholder="New Username" required />
+          <input class="com-inp" type="password" placeholder="New Password" required>
+          <input class="com-inp" type="password" placeholder="Confirm New Password" required>
+          <button class="com-btn" ype="submit">Sign up</button>
+          <p>Already have an account? Click to sign in</p>
+        </div>
+      </form>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.com-form-container {
+  display: flex;
+  justify-content: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.com-form {
+  text-align: center;
+  /* width: 300px; */
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  padding: 15px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+form div {
+  display: flex;
+  flex-direction: column;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+input {
+  margin: 3px;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.com-btn {
+  margin: 3px;
+  background: #252122;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0;
+
+  font-size: 20px;
+  line-height: 48px;
+  padding: 0 16px;
+}
+
+.com-btn:hover{
+  background-color: black;
+  transition: 0.5s;
+}
+
+.com-inp {
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 330px;
+  border-radius: 6px;
+  border: 1px solid #dddfe2;
+  color: #1d2129;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 </style>
