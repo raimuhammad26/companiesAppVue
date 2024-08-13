@@ -2,6 +2,9 @@
 import { ref, onMounted } from 'vue';
 import axios from "axios"
 
+// Import Components
+import CompanySelector from './components/CompanySelector.vue';
+
 const isloggedin = ref(0);
 
 onMounted(() => {
@@ -61,6 +64,7 @@ async function handleSubmitSignUpForm() {
         document.querySelector('.com-nav').style.display = 'flex';
         document.querySelector('.com-headline').style.display = 'none';
         document.querySelector('.com-form').style.display = 'none';
+        document.querySelector('.com-list').style.display = 'block';
         alert("Sign up successful")
       }
 
@@ -98,6 +102,7 @@ async function handleLogin() {
       document.querySelector('.com-nav').style.display = 'flex';
       document.querySelector('.com-headline').style.display = 'none';
       document.querySelector('.com-form').style.display = 'none';
+      document.querySelector('.com-list').style.display = 'block';
     }
 
   } catch (err) {
@@ -113,6 +118,7 @@ function handleLogout() {
   document.querySelector('.com-nav').style.display = 'none';
   document.querySelector('.com-headline').style.display = 'block';
   document.querySelector('.com-form').style.display = 'block';
+  document.querySelector('.com-list').style.display = 'none';
 }
 </script>
 
@@ -158,5 +164,9 @@ function handleLogout() {
       </form>
     </div>
 
+  </div>
+
+  <div class="com-list">
+    <CompanySelector />
   </div>
 </template>
