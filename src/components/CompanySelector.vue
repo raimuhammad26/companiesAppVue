@@ -46,14 +46,14 @@ const goBack = () => {
             </option>
         </select>
 
-        <div>
-            <button>Area 1</button>
+        <div class="com-area">
+            <div>Area 1</div>
             <button @click="selectTopic(selectedCompany, 'Topic 1')">Topic 1</button>
             <button @click="selectTopic(selectedCompany, 'Topic 2')">Topic 2</button>
         </div>
 
-        <div>
-            <button>Area 2</button>
+        <div style="display: flex;">
+            <div>Area 2</div>
             <button  @click="selectTopic(selectedCompany, 'Topic 3')">Topic 3</button>
         </div>
     </div>
@@ -61,9 +61,9 @@ const goBack = () => {
     <!-- Company Answers -->
     <div v-if="showAnswers" class="com-answers">
         <div class="com-answers-header">
-            <div>
-                <div>{{ selectedCompany }}</div>
-                <div>{{ selectedTopic }}</div>
+            <div class="com-ans-head-left">
+                <h2>{{ selectedCompany }}</h2>
+                <h2>{{ selectedTopic }}</h2>
             </div>
 
             <div>
@@ -72,7 +72,7 @@ const goBack = () => {
         </div>
 
         <div class="com-question">
-            <p>What is the TAM of the company?</p>
+            <h2>What is the TAM of the company?</h2>
         </div>
 
         <div class="com-answers-table">
@@ -82,3 +82,83 @@ const goBack = () => {
 
 
 </template>
+
+<style scoped>
+.com-selector{
+    font-size: 17px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    /* background-color: aqua; */
+}
+
+.com-selector button, .com-answers button{
+    background: #252122;
+    color: #fff;
+    margin: 3px;
+    margin-left: 30px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 16px;
+    line-height: 38px;
+    font-weight: 600;
+}
+
+.com-selector button:hover, .com-answers button:hover{
+    transition: 0.5s;
+    background-color: blue;
+}
+
+.com-area{
+    display: flex;
+    align-items: center;
+}
+
+.com-selector select{
+    background: #252122;
+    color: #fff;
+    margin: 3px;
+    margin-left: 30px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 8px 16px;
+    line-height: 38px;
+    font-weight: 600;
+}
+
+.com-answers{
+    font-size: 17px;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+    /* background-color: aqua; */
+}
+
+.com-answers-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.com-ans-head-left{
+    display: flex;
+}
+
+.com-ans-head-left h2{
+    background-color: white;
+    margin-right: 20px;
+    padding: 5px 10px;
+}
+
+.com-question{
+    background-color: white;
+    padding: 5px 10px;
+}
+
+
+</style>
