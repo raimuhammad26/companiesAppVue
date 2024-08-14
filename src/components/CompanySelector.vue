@@ -164,7 +164,7 @@ const goBack = () => {
 
 .com-answers{
     font-size: 17px;
-    width: 600px;
+    width: 1200px;
     margin: 0 auto;
     margin-top: 30px;
     /* background-color: aqua; */
@@ -189,6 +189,47 @@ const goBack = () => {
 
 .com-question {
     background-color: white;
-    padding: 5px 10px;
+    padding: 20px 10px;
+    border-radius: 16px;
+
 }
+
+.com-ans-head-left h2{
+    border-radius: 5px;
+}
+
+.com-answers-table{
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 16px;
+    margin-bottom: 100px;
+    padding-bottom: 20px;
+}
+
+.com-table{
+    width: 100%;
+}
+
+.com-table th, .com-table td {
+  text-align: left;
+  padding: 20px 0px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.com-table tr:last-child td {
+  border-bottom: none;
+}
+
+.com-table th{
+    color: rgb(131, 146, 171);
+    opacity: 0.7;
+    text-transform: uppercase;
+    font-size: 10.4px;
+}
+
+.com-table td {
+    font-size: 12px;
+}
+
 </style>
