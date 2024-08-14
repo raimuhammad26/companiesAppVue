@@ -8,6 +8,8 @@ const selectedCompany = ref('');
 const selectedTopic = ref('');
 const showAnswers = ref(false);
 
+const tamData = ref([]);
+
 
 onMounted(async () => {
     try {
@@ -16,6 +18,15 @@ onMounted(async () => {
         selectedCompany.value = companies.value[0].name;
     } catch (error) {
         console.error('Error fetching company data:', error);
+    }
+});
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://127.0.0.1:5000/company_data');
+        tamData.value = response.data.data; // Access the "data" array from the JSON response
+    } catch (error) {
+        console.error('Error fetching TAM data:', error);
     }
 });
 
@@ -54,7 +65,7 @@ const goBack = () => {
 
         <div style="display: flex;">
             <div>Area 2</div>
-            <button  @click="selectTopic(selectedCompany, 'Topic 3')">Topic 3</button>
+            <button @click="selectTopic(selectedCompany, 'Topic 3')">Topic 3</button>
         </div>
     </div>
 
@@ -76,7 +87,28 @@ const goBack = () => {
         </div>
 
         <div class="com-answers-table">
-
+            <table class="com-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>TAM</th>
+                        <th>Source</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in tamData" :key="index">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ item.TAM }}</td>
+                        <td>{{ item.Source }}</td>
+                        <td>{{ item.Date }}</td>
+                        <td></td> <!-- Empty for now -->
+                        <td></td> <!-- Empty for now -->
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -149,16 +181,14 @@ const goBack = () => {
     display: flex;
 }
 
-.com-ans-head-left h2{
+.com-ans-head-left h2 {
     background-color: white;
     margin-right: 20px;
     padding: 5px 10px;
 }
 
-.com-question{
+.com-question {
     background-color: white;
     padding: 5px 10px;
 }
-
-
 </style>
