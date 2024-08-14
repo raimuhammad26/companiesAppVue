@@ -23,10 +23,12 @@ function loggedInChecker() {
     document.querySelector('.com-nav').style.display = 'none';
     document.querySelector('.com-headline').style.display = 'block';
     document.querySelector('.com-form').style.display = 'block';
+    document.querySelector('.com-list').style.display = 'none';
   } else if (isloggedin.value === 1) {
     document.querySelector('.com-nav').style.display = 'flex';
     document.querySelector('.com-headline').style.display = 'none';
     document.querySelector('.com-form').style.display = 'none';
+    document.querySelector('.com-list').style.display = 'block';
   }
 }
 
@@ -106,7 +108,14 @@ async function handleLogin() {
     }
 
   } catch (err) {
-    alert("Username or password incorrect")
+
+    if (err.response) {
+      if (err.response.status === 401) {
+        alert("Username or password incorrect")
+      }
+    }
+
+    console.log(err.message)
   }
 }
 
