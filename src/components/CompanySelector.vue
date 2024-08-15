@@ -1,6 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import DetailsModal from './DetailsModal.vue';
+
+const showModal = ref(false);
+const selectedDetails = ref({});
 
 const companies = ref([]);
 
@@ -9,6 +13,16 @@ const selectedTopic = ref('');
 const showAnswers = ref(false);
 
 const tamData = ref([]);
+
+const openModal = (index) => {
+  selectedDetails.value = tamData.value[index].Details;
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  selectedDetails.value = {};
+};
 
 
 onMounted(async () => {
@@ -100,7 +114,7 @@ const goBack = () => {
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in tamData" :key="index">
-                        <td>{{ index + 1 }}</td>
+                        <td class="details-btn" @click="openModal(index)">{{ index + 1 }}</td>
                         <td>{{ item.TAM }}</td>
                         <td>{{ item.Source }}</td>
                         <td>{{ item.Date }}</td>
@@ -110,6 +124,13 @@ const goBack = () => {
                 </tbody>
             </table>
         </div>
+
+        <!-- Modal component -->
+    <DetailsModal 
+      :show="showModal" 
+      :details="selectedDetails" 
+      @close="closeModal" 
+    />
     </div>
 
 
@@ -237,6 +258,16 @@ const goBack = () => {
 
 .com-table td {
     font-size: 12px;
+}
+
+.details-btn{
+    cursor: pointer;
+    width: 60px;
+}
+
+.details-btn:hover{
+    font-weight: bold;
+    color: #108a00;
 }
 
 </style>
