@@ -20,7 +20,7 @@ const closeModal = () => {
             <p><strong>Description:</strong> {{ details.Description }}</p>
             <p><strong>Growth Rate:</strong> {{ details.GrowthRate }}</p>
             <p><strong>Target Market:</strong> {{ details.TargetMarket }}</p>
-            <button @click="closeModal">Close</button>
+            <button class="modal-btn" @click="closeModal">Close</button>
         </div>
     </div>
 </template>
@@ -42,5 +42,24 @@ const closeModal = () => {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
+}
+
+.modal-btn{
+    background: #108a00;
+    color: #fff;
+    margin: 3px;
+    margin-top:30px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 16px;
+    line-height: 38px;
+    font-weight: 600;
+}
+
+.modal-btn:hover{
+    background: #0b6100;
+    transition: 0.3s;
 }
 </style>
