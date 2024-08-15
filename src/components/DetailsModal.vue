@@ -16,7 +16,7 @@ const closeModal = () => {
 <template>
     <div class="modal-overlay" v-if="show">
         <div class="modal-content">
-            <h3>Details</h3>
+            <h3 class="modal-heading">Details</h3>
             <p><strong>Description:</strong> {{ details.Description }}</p>
             <p><strong>Growth Rate:</strong> {{ details.GrowthRate }}</p>
             <p><strong>Target Market:</strong> {{ details.TargetMarket }}</p>
@@ -25,7 +25,11 @@ const closeModal = () => {
     </div>
 </template>
 
-<style>
+<style scoped>
+p{
+    margin-bottom: 10px;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -61,5 +65,9 @@ const closeModal = () => {
 .modal-btn:hover{
     background: #0b6100;
     transition: 0.3s;
+}
+
+.modal-heading{
+    margin-bottom: 30px;
 }
 </style>
