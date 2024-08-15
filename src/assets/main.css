@@ -40,7 +40,8 @@ input {
 
 .com-btn {
     margin: 3px;
-    background: #252122;
+    /* background: #252122; */
+    background: #108a00;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -53,8 +54,9 @@ input {
 }
 
 .com-btn:hover {
-    background-color: black;
-    transition: 0.5s;
+    /* background-color: black; */
+    background-color: #0b6100;
+    transition: 0.3s;
 }
 
 .com-inp {
@@ -88,7 +90,8 @@ input {
 }
 
 .logout-btn {
-    background: #252122;
+    /* background: #252122; */
+    background: #108a00;
     color: #fff;
     margin: 3px;
     margin-left: 30px;
@@ -99,4 +102,9 @@ input {
     padding: 0 16px;
     line-height: 38px;
     font-weight: 600;
+}
+
+.logout-btn:hover{
+    background: #0b6100;
+    transition: 0.3s;
 }

@@ -125,7 +125,8 @@ const goBack = () => {
 }
 
 .com-selector button, .com-answers button{
-    background: #252122;
+    /* background: #252122; */
+    background: #108a00;
     color: #fff;
     margin: 3px;
     margin-left: 30px;
@@ -139,8 +140,9 @@ const goBack = () => {
 }
 
 .com-selector button:hover, .com-answers button:hover{
-    transition: 0.5s;
-    background-color: blue;
+    transition: 0.3s;
+    /* background-color: blue; */
+    background: #0b6100;
 }
 
 .com-area{
@@ -149,7 +151,8 @@ const goBack = () => {
 }
 
 .com-selector select{
-    background: #252122;
+    /* background: #252122; */
+    background: #108a00;
     color: #fff;
     margin: 3px;
     margin-left: 30px;
@@ -160,6 +163,10 @@ const goBack = () => {
     padding: 8px 16px;
     line-height: 38px;
     font-weight: 600;
+}
+
+.com-selector select:hover{
+    background: #0b6100;
 }
 
 .com-answers{
